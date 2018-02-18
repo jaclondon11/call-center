@@ -36,14 +36,23 @@ public class Dispatcher {
 	 * Metodo que despacha la llamada
 	 * @param llamada
 	 */
-	public void dispatchCall(Llamada llamada){
+	public synchronized void dispatchCall(Llamada llamada){
+		Empleado empleado = null;
 		for (ColaEmpleados colaEmpleados : ListaDecolaEmpleadosPorCargo) {
-			Empleado empleado = colaEmpleados.getColaEmpleados().remove();
-			empleado.setLlamadaActual(llamada);
-			llamada.setReceptor(empleado);
-			Thread t = new Thread(llamada);
-		    t.start();
+			empleado = colaEmpleados.getColaEmpleados().poll();
+			if (empleado != null) {
+				break;
+			}
 		}
+		if(empleado == null){
+			System.out.println("!------------- NO HAY EMPLEADOS DISPONIBLES ---------------!");
+		}else{
+//			TODO DORMIR HASTA TENER EMPLEDOS DISPONIBLES
+		}
+		empleado.setLlamadaActual(llamada);
+		llamada.setReceptor(empleado);
+		Thread t = new Thread(llamada);
+	    t.start();
 	}
 	
 	public void desocuparEmpleado(Empleado empleado){
