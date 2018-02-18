@@ -6,12 +6,14 @@ package jhoel.callCenterService.empleado;
  *
  */
 public class Director extends Empleado {
+	
+	private static final int PRIORIDAD_LLAMDA = 2;
 
 	/**
 	 * Constructor vacio
 	 */
 	public Director() {
-		super();
+		super(PRIORIDAD_LLAMDA);
 	}
 
 	/**
@@ -19,7 +21,7 @@ public class Director extends Empleado {
 	 * @param nombre
 	 */
 	public Director(String nombre) {
-		super(nombre);
+		super(nombre, PRIORIDAD_LLAMDA);
 	}
 
 }

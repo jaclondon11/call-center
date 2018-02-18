@@ -6,12 +6,14 @@ package jhoel.callCenterService.empleado;
  *
  */
 public class Operador extends Empleado {
+	
+	private static final int PRIORIDAD_LLAMDA = 0;
 
 	/**
 	 * Constructor vacio
 	 */
 	public Operador() {
-		super();
+		super(PRIORIDAD_LLAMDA);
 	}
 
 	/**
@@ -19,7 +21,7 @@ public class Operador extends Empleado {
 	 * @param nombre
 	 */
 	public Operador(String nombre) {
-		super(nombre);
+		super(nombre, PRIORIDAD_LLAMDA);
 	}
 
 }

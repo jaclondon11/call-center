@@ -1,5 +1,7 @@
 package jhoel.callCenterService.empleado;
 
+import jhoel.callCenterService.core.Llamada;
+
 /**
  * Clase que representa la entidad de empleado
  * 
@@ -9,29 +11,45 @@ package jhoel.callCenterService.empleado;
 public abstract class Empleado {
 
 	private String nombre;
+	private int prioridadLlamda;
+	private Llamada llamadaActual;
 
 	/**
-	 * Constructor vacio
+	 * Constructor minimo
+	 * 
+	 * @param prioridadLlamda
 	 */
-	public Empleado() {
+	public Empleado(int prioridadLlamda) {
 		super();
+		this.prioridadLlamda = prioridadLlamda;
 	}
 
 	/**
-	 * Constructor completo
+	 * Constructor Completo
+	 * 
 	 * @param nombre
+	 * @param prioridadLlamda
 	 */
-	public Empleado(String nombre) {
+	public Empleado(String nombre, int prioridadLlamda) {
 		super();
 		this.nombre = nombre;
+		this.prioridadLlamda = prioridadLlamda;
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public int getPrioridadLlamda() {
+		return prioridadLlamda;
+	}
+
+	public Llamada getLlamadaActual() {
+		return llamadaActual;
+	}
+
+	public void setLlamadaActual(Llamada llamadaActual) {
+		this.llamadaActual = llamadaActual;
 	}
 
 }
