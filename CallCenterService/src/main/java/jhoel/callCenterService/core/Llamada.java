@@ -34,8 +34,28 @@ public class Llamada implements Runnable{
 		this.id = idContador++;
 	}
 	
-	//TODO ARREGLAR NOMBRE EMPLEADO POR CARGO
+	public void asignarLlamada(Empleado empleado) {
+		esperarTimeout();
+		empleado.setLlamadaActual(this);
+		this.receptor = empleado;
+		Thread t = new Thread(this);
+	    t.start();
+    }
+	
+	private void esperarTimeout() {
+		try {
+			Thread.sleep(0,100);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void run() {
+		iniciarLlamada();
+	}
+	
+	//TODO ARREGLAR NOMBRE EMPLEADO POR CARGO
+	private  void iniciarLlamada() {
 		ColorPrinter.printLnWithColor("INICIO LLAMADA: " + nombre + " con duracion: " + duracion + "segundo(s), Por empleado " + receptor.getNombre(), id);
 		this.estado = Constantes.ESTADOS_LLAMADA.ACTIVA.getEstado();
 		for (int i = 1; i <= duracion; i++) {
@@ -49,7 +69,7 @@ public class Llamada implements Runnable{
 		ColorPrinter.printLnWithColor("LLAMADA " + nombre + " TERMINADA.", id);
 		finalizarTarea();
 	}
-	
+
 	private void finalizarTarea(){
 		receptor.setLlamadaActual(null);
 		this.estado = Constantes.ESTADOS_LLAMADA.FINALIZADA.getEstado();

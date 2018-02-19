@@ -36,7 +36,7 @@ public class Dispatcher {
 	 * Metodo que despacha la llamada
 	 * @param llamada
 	 */
-	public synchronized void dispatchCall(Llamada llamada){
+	public void dispatchCall(Llamada llamada){
 		Empleado empleado = null;
 		for (ColaEmpleados colaEmpleados : ListaDecolaEmpleadosPorCargo) {
 			empleado = colaEmpleados.getColaEmpleados().poll();
@@ -48,11 +48,9 @@ public class Dispatcher {
 			System.out.println("!------------- NO HAY EMPLEADOS DISPONIBLES ---------------!");
 		}else{
 //			TODO DORMIR HASTA TENER EMPLEDOS DISPONIBLES
+			llamada.asignarLlamada(empleado);
 		}
-		empleado.setLlamadaActual(llamada);
-		llamada.setReceptor(empleado);
-		Thread t = new Thread(llamada);
-	    t.start();
+		
 	}
 	
 	public void desocuparEmpleado(Empleado empleado){
@@ -68,7 +66,7 @@ public class Dispatcher {
 		listaEmpleados.add(new Operador("1"));
 		listaEmpleados.add(new Operador("1"));
 		Dispatcher dispatcher = new Dispatcher(listaEmpleados);
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 5; i++) {
 			dispatcher.dispatchCall(new Llamada(Integer.toString(i)));
 		}
 	}

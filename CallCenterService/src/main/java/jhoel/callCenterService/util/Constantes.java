@@ -7,6 +7,7 @@ package jhoel.callCenterService.util;
  */
 public class Constantes {
 
+	//TODO CAMBIAR 5 y 10 al entregar
 	public static final int DURACION_MINIMA = 1;
 	public static final int DURACION_MAXIMA = 5;
 
