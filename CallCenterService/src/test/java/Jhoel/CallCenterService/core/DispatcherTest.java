@@ -120,7 +120,7 @@ public class DispatcherTest{
 	}
 	
 	/**
-	 * Test de mas de 10 llamadas concurrentes
+	 * Test de mas de 10 llamadas concurrentes, para la solucion de mas de 10 llamadas
 	 * @throws Throwable
 	 */
 	@Test
