@@ -7,8 +7,17 @@ import org.junit.Test;
 import jhoel.callCenterService.core.Llamada;
 import jhoel.callCenterService.util.Constantes;
 
+/**
+ * 
+ * @author Jhoel
+ *
+ */
 public class LlamadaTest {
 
+	/**
+	 * Este test se realizo para testear la creación de muchas tareas y validar
+	 * que todas tengan un tiempo de duraicon de 5 a 10 segundos
+	 */
 	@Test
 	public void validarDuracionAleatoriaLlamadas() {
 		boolean valorMinimo = false;
