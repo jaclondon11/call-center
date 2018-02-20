@@ -56,7 +56,7 @@ public class DispatcherTest{
 	}
 	
 	/**
-	 * Test de 10 llamadas concurrentes: En este Testse utiliza la clase Waiter
+	 * Test de 10 llamadas concurrentes: En este Test se utiliza la clase Waiter
 	 * para poder testear hilos concurrentes, ya que junit termina la ejecución
 	 * del hilo principal al terminar el metodo @Test; Por esta razón con ayuda
 	 * de la clase Waiter podemos detener el hilo de Junit durante el tiempo que
@@ -120,7 +120,13 @@ public class DispatcherTest{
 	}
 	
 	/**
-	 * Test de mas de 10 llamadas concurrentes, para la solucion de mas de 10 llamadas
+	 * Test de mas de 10 llamadas concurrentes, para la solucion de mas de 10
+	 * llamadas, En este test se aumenta el tiempo de espera del objeto waiter,
+	 * para darle el tiempo necesario a la clase dispather de atender las 20
+	 * llamadas, como solo crean 10 empleados, las llamdas que llegan despues de
+	 * las 10 primeras, quedan en un hilo que espera cada segundo y valida si ya
+	 * se desocup&oacute algun empleado
+	 * 
 	 * @throws Throwable
 	 */
 	@Test
