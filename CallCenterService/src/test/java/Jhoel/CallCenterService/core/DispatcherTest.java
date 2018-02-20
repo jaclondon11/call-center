@@ -19,6 +19,11 @@ import jhoel.callCenterService.exception.CustomException;
 import jhoel.callCenterService.util.Constantes;
 import net.jodah.concurrentunit.Waiter;
 
+/**
+ * 
+ * @author Jhoel
+ *
+ */
 public class DispatcherTest{
 	
 	private static final int TIMEOUT = 1;

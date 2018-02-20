@@ -1,7 +1,7 @@
 package jhoel.callCenterService.util;
 
 /**
- * 
+ * Esta clase se encuentran todas las constantes genericas de la aplicaci&oacuten;
  * @author Jhoel
  *
  */
