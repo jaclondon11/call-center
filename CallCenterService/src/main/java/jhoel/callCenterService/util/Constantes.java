@@ -7,13 +7,15 @@ package jhoel.callCenterService.util;
  */
 public class Constantes {
 
-	//TODO CAMBIAR 5 y 10 al entregar
-	public static final int DURACION_MINIMA = 1;
-	public static final int DURACION_MAXIMA = 5;
+	public static final int DURACION_MINIMA = 5;
+	public static final int DURACION_MAXIMA = 10;
+	
+	public static final int SEGUNDO_EN_MILISEGUNDOS = 1000;
+	public static final int CANTIDAD_CARGOS = 3;
 
 	/**
 	 * 
-	 * Enum de estados de llamadas
+	 * Enum de estados de la llamada
 	 *
 	 */
 	public static enum ESTADOS_LLAMADA {

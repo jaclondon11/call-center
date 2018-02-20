@@ -14,7 +14,7 @@ public class LlamadaTest {
 		boolean valorMinimo = false;
 		boolean valorMaximo = false;
 		for (int i = 0; i < 1000; i++) {
-			Llamada llamada = new Llamada(Integer.toString(i));
+			Llamada llamada = new Llamada();
 			assertTrue(llamada.getDuracion() >= Constantes.DURACION_MINIMA
 					&& llamada.getDuracion() <= Constantes.DURACION_MAXIMA);
 			valorMinimo = llamada.getDuracion() == Constantes.DURACION_MINIMA ? true : valorMinimo;

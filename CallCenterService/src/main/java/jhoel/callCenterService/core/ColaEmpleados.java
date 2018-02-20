@@ -7,6 +7,7 @@ import java.util.Queue;
 
 import jhoel.callCenterService.empleado.Empleado;
 import jhoel.callCenterService.exception.CustomException;
+import jhoel.callCenterService.util.Constantes;
 
 /**
  * Clase que representa la cola de empleados
@@ -16,9 +17,13 @@ import jhoel.callCenterService.exception.CustomException;
  */
 public class ColaEmpleados {
 
-	private int prioridadLlamada;
-	private Queue<Empleado> colaEmpleados = new LinkedList<Empleado>();
+	private int prioridadLlamada; //indica la prioridad de empleados en la cola
+	private Queue<Empleado> colaEmpleados = new LinkedList<Empleado>(); //cola de empleados
 
+	/**
+	 * Constructor minimo
+	 * @param prioridadLlamada
+	 */
 	public ColaEmpleados(int prioridadLlamada) {
 		super();
 		this.prioridadLlamada = prioridadLlamada;
@@ -33,15 +38,11 @@ public class ColaEmpleados {
 	public static List<ColaEmpleados> constuirListadeColaEmpleadosPorCargo(List<Empleado> listaEmpleados)
 			throws CustomException {
 		
-		List<ColaEmpleados> colaEmpleadosPorCargo = new ArrayList<ColaEmpleados>(3);
-		ColaEmpleados colaEmpleados = new ColaEmpleados(0);
-		colaEmpleadosPorCargo.add(colaEmpleados);
-		colaEmpleados = new ColaEmpleados(1);
-		colaEmpleadosPorCargo.add(colaEmpleados);
-		colaEmpleados = new ColaEmpleados(2);
-		colaEmpleadosPorCargo.add(colaEmpleados);
-		
-		
+		List<ColaEmpleados> colaEmpleadosPorCargo = (new ArrayList<ColaEmpleados>(Constantes.CANTIDAD_CARGOS));
+		for (int i = 0; i < Constantes.CANTIDAD_CARGOS; i++) {
+			ColaEmpleados colaEmpleados = new ColaEmpleados(i);
+			colaEmpleadosPorCargo.add(colaEmpleados);
+		}
 		validarListadoEmpleados(listaEmpleados);
 		for (Empleado empleado : listaEmpleados) {
 			agregarEmpleadoDisponible(empleado, colaEmpleadosPorCargo);
@@ -49,30 +50,17 @@ public class ColaEmpleados {
 		return colaEmpleadosPorCargo;
 	}
 	
+	/**
+	 * Metodo que agrega empleados disponibles en la cola de empleados
+	 * @param empleado
+	 * @param colaEmpleadosPorCargo
+	 */
 	public static void agregarEmpleadoDisponible(Empleado empleado, List<ColaEmpleados> colaEmpleadosPorCargo){
 		int prioridadEmpleado = empleado.getPrioridadLlamda();
-//		ColaEmpleados colaEmpleados = obtenerColaEmpleadosPorPrioridad(colaEmpleadosPorCargo, prioridadEmpleado);
 		ColaEmpleados colaEmpleados = colaEmpleadosPorCargo.get(prioridadEmpleado);
 		colaEmpleados.getColaEmpleados().add(empleado);
 	}
 
-	/**
-	 * 
-	 * @param colaEmpleadosPorCargo
-	 * @param prioridadEmpleado
-	 * @return
-	 */
-	private static ColaEmpleados obtenerColaEmpleadosPorPrioridad(List<ColaEmpleados> colaEmpleadosPorCargo,
-			int prioridadEmpleado) {
-		ColaEmpleados colaEmpleados;
-		try {
-			colaEmpleados = colaEmpleadosPorCargo.get(prioridadEmpleado);
-		} catch (IndexOutOfBoundsException e) {
-			colaEmpleados = new ColaEmpleados(prioridadEmpleado);
-		}
-		colaEmpleadosPorCargo.add(prioridadEmpleado, colaEmpleados);
-		return colaEmpleados;
-	}
 
 	/**
 	 * 

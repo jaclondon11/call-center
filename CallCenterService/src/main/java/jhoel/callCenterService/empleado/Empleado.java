@@ -23,6 +23,8 @@ public abstract class Empleado {
 		super();
 		this.prioridadLlamda = prioridadLlamda;
 	}
+	
+	public abstract String getCargo();
 
 	/**
 	 * Constructor Completo
@@ -35,7 +37,7 @@ public abstract class Empleado {
 		this.nombre = nombre;
 		this.prioridadLlamda = prioridadLlamda;
 	}
-
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -51,5 +53,5 @@ public abstract class Empleado {
 	public void setLlamadaActual(Llamada llamadaActual) {
 		this.llamadaActual = llamadaActual;
 	}
-
+	
 }

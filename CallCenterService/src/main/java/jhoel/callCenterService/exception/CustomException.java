@@ -2,6 +2,7 @@ package jhoel.callCenterService.exception;
 
 /**
  * Exception personalizada
+ * 
  * @author Jhoel
  *
  */
