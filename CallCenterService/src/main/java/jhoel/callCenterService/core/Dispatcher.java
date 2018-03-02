@@ -47,7 +47,7 @@ public class Dispatcher {
 	 * Este metodo obtiene de la cola de empleados por cargo el empleado con el cargo mas bajo disponible
 	 * @return
 	 */
-	private synchronized Empleado obtenerEmpleadoConMenorCargoDisponible() {
+	private Empleado obtenerEmpleadoConMenorCargoDisponible() {
 		Empleado empleado = null;
 			for (ColaEmpleados colaEmpleados : ListaDecolaEmpleadosPorCargo) {
 				empleado = colaEmpleados.getColaEmpleados().poll();
