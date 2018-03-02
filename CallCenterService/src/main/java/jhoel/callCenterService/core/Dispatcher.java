@@ -34,7 +34,7 @@ public class Dispatcher {
 	 * Metodo que despacha la llamada
 	 * @param llamada
 	 */
-	public void dispatchCall(Llamada llamada){
+	public synchronized void dispatchCall(Llamada llamada){
 		Empleado empleado = obtenerEmpleadoConMenorCargoDisponible();
 		if(empleado == null){
 			System.out.println("!------------- NO HAY EMPLEADOS DISPONIBLES, ESPERANDO HASTA QUE ALGUN EMPLEADO ESTE LIBRE ---------------!");
